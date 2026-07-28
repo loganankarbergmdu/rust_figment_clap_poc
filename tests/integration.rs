@@ -95,9 +95,9 @@ fn explicit_cli_flag_overrides_toml_and_env_selectively() {
 
         // Only --width is passed on the CLI; everything else should come
         // from TOML/env, NOT get reset to clap's compiled-in defaults.
-        let cfg = load_config_from(["myapp", "--width", "999"]).unwrap();
+        let cfg = load_config_from(["myapp", "--width", "400"]).unwrap();
 
-        assert_eq!(cfg.display.width, 999, "explicit CLI flag wins");
+        assert_eq!(cfg.display.width, 400, "explicit CLI flag wins");
         assert_eq!(
             cfg.display.theme, "light",
             "untouched by CLI, comes from toml"
